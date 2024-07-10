@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { AUTH_ANON_KEY, AUTH_URL } from "../config/env";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import Home from "./Home";
+import { API_KEY_SUPABASE, URL_SUPABASE } from "../config/env";
 
-const supabase = createClient(AUTH_URL, AUTH_ANON_KEY);
+const supabase = createClient(URL_SUPABASE, API_KEY_SUPABASE);
 
 export default function Login() {
   const [session, setSession] = useState(null);
@@ -26,6 +27,6 @@ export default function Login() {
   if (!session) {
     return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
   } else {
-    return <div>Logged in!</div>;
+    return <Home />;
   }
 }
