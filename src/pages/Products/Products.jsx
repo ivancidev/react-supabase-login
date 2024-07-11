@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
-import { API_KEY_SUPABASE, URL_SUPABASE } from "../config/env";
+import { API_KEY_SUPABASE, URL_SUPABASE } from "../../config/env";
+import ActionAreaCard from "../../components/Card";
+import "./products.css";
 
 const supabase = createClient(URL_SUPABASE, API_KEY_SUPABASE);
 
@@ -24,17 +26,14 @@ export default function Products() {
 
   return (
     <>
-      <div>
+      <section id="products">
         <h2>Products</h2>
-        <ul>
+        <div className="divider">
           {products.map((product) => (
-            <li key={product.id}>
-              <p>{product.name}  <b>${product.cost}</b></p>
-              <p>{product.description}</p>
-            </li>
+            <ActionAreaCard key={product.id} {...product} />
           ))}
-        </ul>
-      </div>
+        </div>
+      </section>
     </>
   );
 }
