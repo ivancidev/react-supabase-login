@@ -1,0 +1,9 @@
+.mySwiper {
+  text-align: center;
+}
+
+.imgSwiper {
+  width: 40%;
+  object-fit: cover;
+  border-radius: 10px;
+}
